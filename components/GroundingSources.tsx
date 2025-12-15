@@ -1,9 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
-import { WebSource } from '../types';
-=======
-import { WebSource, SchoolStatus } from '../types';
->>>>>>> a1f8e1f46a5d3f79a405852c761abdf64c0bdb8d
+// Merge: Include both WebSource and SchoolStatus, as SchoolStatus is needed for the badge function
+import { WebSource, SchoolStatus } from '../types'; 
 import { ExternalLink, Globe } from 'lucide-react';
 
 interface GroundingSourcesProps {
@@ -13,8 +10,7 @@ interface GroundingSourcesProps {
 const GroundingSources: React.FC<GroundingSourcesProps> = ({ sources }) => {
   if (sources.length === 0) return null;
 
-<<<<<<< HEAD
-=======
+  // Keep the status badge logic (from the remote version)
   const getStatusBadge = (status?: SchoolStatus) => {
     switch (status) {
       case SchoolStatus.OPEN:
@@ -29,38 +25,21 @@ const GroundingSources: React.FC<GroundingSourcesProps> = ({ sources }) => {
     }
   };
 
->>>>>>> a1f8e1f46a5d3f79a405852c761abdf64c0bdb8d
   return (
     <div className="mt-8 bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-800">
       <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
         <Globe className="w-4 h-4" />
         Verified Sources
       </h3>
-<<<<<<< HEAD
-      <div className="grid gap-3 sm:grid-cols-2">
-=======
+      {/* Choose one grid layout, 'sm:grid-cols-1' is better for mobile readability */}
       <div className="grid gap-3 sm:grid-cols-1">
->>>>>>> a1f8e1f46a5d3f79a405852c761abdf64c0bdb8d
         {sources.map((source, index) => (
           <a
             key={index}
             href={source.uri}
             target="_blank"
             rel="noopener noreferrer"
-<<<<<<< HEAD
-            className="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-800 transition-colors group border border-slate-800 bg-slate-900/50"
-          >
-            <div className="bg-slate-800 p-2 rounded-lg group-hover:bg-slate-700 transition-colors">
-              <ExternalLink className="w-4 h-4 text-blue-400" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-gray-200 truncate">
-                {source.title}
-              </p>
-              <p className="text-xs text-gray-500 truncate">
-                {new URL(source.uri).hostname}
-              </p>
-=======
+            // Merge classes to include badge display (flex items-center justify-between)
             className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-800 transition-colors group border border-slate-800 bg-slate-900/50"
           >
             <div className="flex items-center gap-3 min-w-0">
@@ -77,9 +56,9 @@ const GroundingSources: React.FC<GroundingSourcesProps> = ({ sources }) => {
               </div>
             </div>
             
+            {/* Include the badge display logic */}
             <div className="flex-shrink-0 ml-3">
               {getStatusBadge(source.status)}
->>>>>>> a1f8e1f46a5d3f79a405852c761abdf64c0bdb8d
             </div>
           </a>
         ))}
